@@ -1,0 +1,110 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+</head>
+<body>
+ <div id="admin1">
+        <h1>Please Enter Your Details</h1>
+        <form id="form">
+          <input type="text" id="name" placeholder="Name" required><br>
+          <input type="email" id="email" placeholder="Email" required><br>
+          <input type="password" id="password" placeholder="******" required><br>
+           
+           <input type="submit" value="Submit" />
+        </form>
+    
+      </div>
+      <a href="index.html">go to home page</a>
+      <!-- <form >
+        <input  type="submit" value="Submit" />
+      </form> -->
+      
+      <!-- admin -->
+      <div id="admin"> </div>
+</body>
+</html>
+<script >
+ let admin = document.querySelector("#admin1");
+    admin.addEventListener("submit",function(event){
+      event.preventDefault();
+      console.log("w")
+      if(form.name.value == "admin" && form.email.value == "admin@gmail.com"){
+        let logged_user = JSON.parse(localStorage.getItem("usersData"));
+      console.log(logged_user)
+      let cartItems = JSON.parse(localStorage.getItem("cartProducts"));
+      console.log(cartItems)
+let parent = document.getElementById("admin");
+//parent = logged_user;
+logged_user.forEach((ele,i) => {
+   let div = document.createElement("div");
+
+   let user = document.createElement("h2");
+   user.textContent = "user" + (+i+1)
+   let name = document.createElement("p");
+   name.textContent = ele.name;
+
+   let email = document.createElement("p");
+   email.textContent = ele.email;
+
+   let pass = document.createElement("p");
+   pass.textContent = ele.password;
+   
+   let cart = document.createElement("h3")
+   cart.textContent = "Product Details"
+
+
+
+   div.append(user ,name,email,pass,cart);
+   parent.append(div)
+
+   div.style.boxShadow = ' rgba(0, 0, 0, 0.24) 0px 3px 8px' ;
+   email.style.color = "red"
+   user.style.color = "green"
+
+   cartItems.forEach((ele,i) => {
+   let div1 = document.createElement("div");
+
+   
+   let name1 = document.createElement("p");
+   name1.textContent = ele.name;
+
+   let price = document.createElement("p");
+   price.textContent = ele.price;
+
+   let des = document.createElement("p");
+   des.textContent = ele.Description;
+   
+   let img = document.createElement("img")
+   img.setAttribute("src" , ele.avatar)
+   div1.append(name1 ,price,des,img);
+  
+
+   div.append(div1)
+
+
+   
+   div1.style.boxShadow = ' rgba(0, 0, 0, 0.24) 0px 3px 8px' ;
+   name.style.color = "red"
+   price.style.color = "green"
+   img.style.width = "30%"
+});
+
+});
+
+
+parent.style.display = 'grid';
+parent.style.gridTemplateColumns= 'repeat(4,1fr)';
+parent.style.gap = '20px';
+parent.style.margintop = '50px' ;
+
+      }
+      else{
+        alert("admin details wrong")
+      }
+      
+
+    })
+</script>

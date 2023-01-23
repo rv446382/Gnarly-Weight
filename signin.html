@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign in Page</title>
+    <style>
+      body {
+     background-image: url("photo-1483985988355-763728e1935b.avif");
+    }
+        .nav {
+      display: flex;
+     justify-content: space-between;
+      text-decoration: none;
+      border: 1px;
+      margin: 20px;
+      padding: 10px;
+    }
+
+    .nav>div>a>img {
+      width: 100px;
+      height: 80px;
+      text-decoration: none;
+      border-radius: 10px;
+    
+    }
+    #login1{
+      display: grid;
+      grid-template-rows: repeat(1fr);
+     flex-wrap: wrap-reverse;
+     text-decoration: none;
+
+    
+    
+    }
+    #div{
+      padding-top: 30px;
+     margin-left: 400px;
+     margin-bottom: 10px;
+      width: 600px;
+      height: 400px;
+      
+      background-color:aliceblue;
+      text-align: center;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    }
+    #signin>input{
+    
+      width: 300px;
+      height: 30px;
+      margin: 10px;
+    
+      font-size: 16px;
+      
+    }
+    
+
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <div><a href="index.html"><img
+            src="data:image/png;base64,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"
+            alt=""></a></div>
+      <div id="login1">
+        <div class="log"> <button><a href="./login.html">Signup</a></button></div>
+        <div class="log"> <button><a href="./signin.html">Signin</a></button></div>
+        <div class="log"><button id="btn">Logout</button></div>
+      </div>
+    </div>
+    <div id="div">
+      <h1 id="heading">Please Enter Your Details</h1>
+      <form id="signin">
+        <input type="email" id="email1" placeholder="Email" required/><br>
+        <input type="password" id="password1" placeholder="********" required/><br>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+  
+</html>
+<script src="./script.js">
+  
+  // logout 
+  logout = document.getElementById("btn");
+logout.addEventListener('click',function(){
+  window.location.assign("./login.html")
+    alert('logout successful!')
+   
+  })
+  // let signIn = document.querySelector("form");
+  //   signIn.addEventListener("submit", function (event) {
+  //       event.preventDefault();
+  //       let count = 0;
+  //       // we are creating a temp var to store user who is trying to login
+  //       let temp;
+  //       // we are checking whether the user is registered or not
+  //       users.forEach(function (el) {
+  //           console.log(el.email)
+  //       //   if (el.email === signIn.email1.value) {
+  //       //     count++;
+
+  //       //     // when count is incremented or we found user, we are storing the user data;
+  //       //     temp = el;
+  //       //     // we are storing the user in our local storage so that we can access user data from different pages
+  //       //     localStorage.setItem('loggedUser',JSON.stringify(el));
+  //        // }
+  //       });
+  //       // if we didn't find any user we alert
+  //       if (count == 0) {
+  //         alert("user not registered!");
+  //       }
+  //       // if we find user we check the password
+  //        else {
+  //           // we check the temp password with form password
+  //         if (temp.password != signIn.password1.value) {
+  //           alert("wrong password");
+  //         } else {
+  //           alert("login successful!");
+  //           // we can use n number of methods to change the page. here we are using assign() method
+  //           // window.location.assign('url')
+  //           window.location.assign("./index.html");
+  //         }
+  //       }
+  //       console.log(signIn.password1.value,signIn.email1.value)
+  //     });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
