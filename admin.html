@@ -61,9 +61,10 @@ logged_user.forEach((ele,i) => {
    parent.append(div)
 
    div.style.boxShadow = ' rgba(0, 0, 0, 0.24) 0px 3px 8px' ;
+   div.style.padding = "10px"
    email.style.color = "red"
    user.style.color = "green"
-
+  
    cartItems.forEach((ele,i) => {
    let div1 = document.createElement("div");
 
@@ -87,18 +88,19 @@ logged_user.forEach((ele,i) => {
 
    
    div1.style.boxShadow = ' rgba(0, 0, 0, 0.24) 0px 3px 8px' ;
+   div1.style.margin = "10px"
    name.style.color = "red"
    price.style.color = "green"
    img.style.width = "30%"
 });
-
+// git commit
 });
 
 
 parent.style.display = 'grid';
 parent.style.gridTemplateColumns= 'repeat(4,1fr)';
 parent.style.gap = '20px';
-parent.style.margintop = '50px' ;
+parent.style.margin = '50px' ;
 
       }
       else{

@@ -46,7 +46,7 @@
 
       <br> 
       <div id="cart-detials">
-        <div>  <h1 id="total">Your Total cart Product is:- <span id="cart">0</span></h1>
+        <div>  
           <h1 id="total">Your Total cart Price is:- <span id="cart-total">0</span></h1></div>
         <div> <button>  <a href="payment.html"> Procced to checkout </a> </button> </div>
        
@@ -154,7 +154,7 @@
   let bag = [];
   let count =0;
  let cartItems = JSON.parse(localStorage.getItem("cartProducts"))||[];
- //console.log(cartItems);
+ console.log(cartItems);
  displayCard(cartItems);
  
   function search(){
@@ -168,20 +168,18 @@
 
   };
   
-  // total cart product price 
-  let totalCost = cartItems.reduce((acc,element) => acc+element.price,0);
-  console.log("Total cart product price : " ,totalCost);
 
-  let r2 = document.querySelector("#cart-total").innerText = totalCost;
+ 
   //console.log(r2);
 
-  let r1 = document.querySelector("#cart").innerText = count;
-  //console.log(r1);
+
+
 
   function displayCard(array){
     document.querySelector("#product-container").innerHTML = "";
     //console.log(data.data);
-    array.forEach(function(element) {
+    let total = 0;
+    array.forEach(function(element,index) {
 
     let div = document.createElement("div");
 
@@ -193,22 +191,92 @@
 
       let price = document.createElement("h3");
        price.innerText =element.price;  
-
+      
+      //console.log(total)
       let Details= document.createElement("p");
       Details.innerText = element.Description;
 
       let rating= document.createElement("p");
       rating.innerText = element.rating;
 
-      div.append(imgprod , brand , price ,Details , rating );
+
+      
+     
+      
+     
+      let qty = document.createElement('span');
+            qty.textContent = element[1]||1;
+              
+
+            let add = document.createElement("button");
+            add.textContent = "+";
+
+            add.addEventListener("click", function () {
+          
+             element[1]++;
+              
+             localStorage.setItem("cartProuctds",JSON.stringify(cartItems));
+             
+             qty.textContent++;
+            // window.location.reload() ;
+            })
+
+           
+           
+         
+
+            let rem = document.createElement("button");
+            rem.textContent = "-";
+
+            rem.addEventListener("click",function() {
+              if (element[1]<=1){
+            cartItems.splice(index,1);
+        
+        localStorage.setItem('cartProducts',JSON.stringify(cartItems));
+        window.location.reload();
+        }
+        else{
+            element[1]--;
+            localStorage.setItem('cartProducts',JSON.stringify(cartItems));
+            qty.textContent--;
+            window.location.reload();
+        }
+
+            })
+
+      let btn = document.createElement('button');
+      btn.textContent = "delete";
+      btn.addEventListener("click",function() {
+        deleteData(element,index);
+        window.location.reload();
+      })
+      function deleteData(element,index){
+    filterData = cartItems.filter((ele,i) => {
+        return i !== index;
+    })
+    displayCard(filterData)
+    localStorage.setItem('cartProducts',JSON.stringify(filterData));
+    
+  }
+
+      div.append(imgprod , brand , price ,Details , rating,add,qty,rem,btn );
 
       document.querySelector("#product-container").append(div);
 
-      count++;
+     
+     
+     //console.log("Total cart product price : " ,totalPrice);
+     //let r2 = document.querySelector("#cart-total").innerText = totalPrice;
   });
-      
-    
+ 
+  // total cart product price 
+   
+  //let totalCost = cartItems.reduce((acc,element) => acc+element.price* Number(n),0);
+
+  
+  
   };
+ 
 
   //   filter funcitionality
   let s = document.querySelector("#select2");
