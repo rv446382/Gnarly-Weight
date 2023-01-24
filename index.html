@@ -252,13 +252,34 @@
 
 
             let but = document.createElement("button");
-            but.innerText = "add to cart";
+            but.textContent = "add to cart";
 
-            but.addEventListener("click", function () {
-                cartItems.push(element);
-                alert("added new product");
-                localStorage.setItem("cartProducts", JSON.stringify(cartItems));
-            });
+            but.addEventListener("click", function (e) {
+              e.preventDefault();
+               let cartItems = JSON.parse(localStorage.getItem("cartProducts"));
+               if(cartItems == null) {   cartItems = []; }
+              
+               let isAready = false;
+                  for(let i = 0; i < cartItems.length; i++){
+                    if(cartItems[i].id == element.id){
+                      isAready = true;
+                      break;
+                    }
+                  } 
+               
+                  if(isAready == true){
+                    alert("Already Placed Order");
+                    
+                  } 
+                
+                  else{
+
+                    cartItems.push(element);
+                    localStorage.setItem("cartProducts",JSON.stringify(cartItems));
+                    alert("Successfully Placed Order");
+                  }
+               
+            })
 
 
 
@@ -279,8 +300,8 @@
       let filterData = bag.filter((ele) => {
         return ele.name==selected;
       })
-      console.log(filterData)
-      displayCard(filterData)
+      console.log(filterData);
+      displayCard(filterData);
 
     }
     })
